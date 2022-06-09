@@ -28,7 +28,7 @@ class UrlShortenerStack(Stack):
         api = aws_apigateway.LambdaRestApi(self, 'api',
                                            handler=function,
                                            domain_name=aws_apigateway.DomainNameOptions(
-                                               domain_name="go.crazymagic.studio",
+                                               domain_name=config.zone_name,
                                                certificate=acm.Certificate.from_certificate_arn(self, 'cert', config.certificate_arn)
                                            ))
         hosted_zone = aws_route53.HostedZone.from_hosted_zone_attributes(self, 'imported-hosted-zone',
