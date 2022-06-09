@@ -1,18 +1,26 @@
 
-# Welcome to your CDK Python project!
+# URL Shortener
 
-This is a blank project for CDK development with Python.
+This example project uses AWS CDK create a URL shortener. The application
+creates AWS resources to support its functionality. AWS API Gateway provides a
+front-end endpoint for end users. AWS Lambda provides the functionality of
+creating and reading short urls. AWS DynamoDB Table for storing and retrieving
+the original urls and short 8-digit UUID codes. AWS Route53 creates a record
+to point a custom domain to the API Gateway. AWS Certificate Manager provides
+the API Gateway with a certificate to support HTTPS traffic over port 443.
+
+![URL Shortener Architecture Diagram](url-shortener.png)
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-This project is set up like a standard Python project.  The initialization
+This project is set up like a standard Python project.  The initialization 
 process also creates a virtualenv within this project, stored under the `.venv`
 directory.  To create the virtualenv it assumes that there is a `python3`
 (or `python` for Windows) executable in your path with access to the `venv`
 package. If for any reason the automatic creation of the virtualenv fails,
 you can create the virtualenv manually.
 
-To manually create a virtualenv on MacOS and Linux:
+To manually create a virtualenv on macOS and Linux:
 
 ```
 $ python -m venv .venv
