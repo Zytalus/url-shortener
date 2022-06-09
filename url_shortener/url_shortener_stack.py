@@ -9,6 +9,8 @@ from aws_cdk import (
 )
 from constructs import Construct
 
+import config
+
 
 class UrlShortenerStack(Stack):
 
@@ -27,9 +29,9 @@ class UrlShortenerStack(Stack):
                                            handler=function,
                                            domain_name=aws_apigateway.DomainNameOptions(
                                                domain_name="go.crazymagic.studio",
-                                               certificate=acm.Certificate.from_certificate_arn(self, 'cert', "arn:aws:acm:us-east-1:478062622781:certificate/3f63a892-ae7b-41f7-aba4-f32c64a42f6e")
+                                               certificate=acm.Certificate.from_certificate_arn(self, 'cert', config.certificate_arn)
                                            ))
         hosted_zone = aws_route53.HostedZone.from_hosted_zone_attributes(self, 'imported-hosted-zone',
-                                                                         hosted_zone_id="Z03983981EGB0ECNSGVGV",
-                                                                         zone_name="go.crazymagic.studio")
+                                                                         hosted_zone_id=config.hosted_zone_id,
+                                                                         zone_name=config.zone_name)
         route = aws_route53.ARecord(self, 'go-alias-record', zone=hosted_zone, target=aws_route53.RecordTarget.from_alias(aws_route53_targets.ApiGateway(api)))

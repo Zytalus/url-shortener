@@ -4,6 +4,7 @@ import os
 import uuid
 import boto3
 
+
 LOG = logging.getLogger()
 LOG.setLevel(logging.INFO)
 
@@ -23,7 +24,9 @@ def main(event, context):
 
     return {
         'statusCode': 200,
-        'body': 'usage: https://go.crazymagic.studio/?targetUrl=URL-GOES-HERE'
+        'body': 'usage: https://'
+                + event["requestContext"]["domainName"]
+                + '/?targetUrl=URL-GOES-HERE'
     }
 
 
