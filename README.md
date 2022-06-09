@@ -1,7 +1,7 @@
 
 # URL Shortener
 
-This example project uses AWS CDK create a URL shortener. The application
+This example project uses AWS CDK create a URL shortener with python. The application
 creates AWS resources to support its functionality. AWS API Gateway provides a
 front-end endpoint for end users. AWS Lambda provides the functionality of
 creating and reading short urls. AWS DynamoDB Table for storing and retrieving
